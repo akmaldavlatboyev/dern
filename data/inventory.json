@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Quvvat Bloki 650W",
+    "category": "hardware",
+    "quantity": 15,
+    "price": 450000,
+    "supplier": "TechParts MChJ",
+    "lastUpdated": "2025-05-24T11:55:57.862Z"
+  },
+  {
+    "id": 2,
+    "name": "RAM DDR4 16GB",
+    "category": "hardware",
+    "quantity": 8,
+    "price": 650000,
+    "supplier": "Memory World",
+    "lastUpdated": "2025-05-24T11:55:57.862Z"
+  },
+  {
+    "id": 3,
+    "name": "Windows 11 Pro Litsenziya",
+    "category": "software",
+    "quantity": 25,
+    "price": 1000000,
+    "supplier": "Microsoft",
+    "lastUpdated": "2025-05-24T11:55:57.862Z"
+  }
+]

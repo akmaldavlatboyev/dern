@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "title": "Kompyuter Ishga Tushmayapti - Muammolarni Hal Qilish",
+    "category": "hardware",
+    "content": "1-qadam: Quvvat ulanishlarini tekshiring. 2-qadam: Quvvat blokini sinab ko'ring. 3-qadam: RAM modullarini tekshiring. 4-qadam: Anakartni shikastlanish uchun ko'zdan kechiring.",
+    "tags": [
+      "quvvat",
+      "ishga tushirish",
+      "apparat"
+    ],
+    "views": 1250,
+    "createdAt": "2025-05-24T11:55:57.862Z"
+  },
+  {
+    "id": 2,
+    "title": "Sekin Kompyuter Ishlashi Yechimlari",
+    "category": "performance",
+    "content": "1-qadam: Disk tozalashni ishga tushiring. 2-qadam: Zararli dasturlarni tekshiring. 3-qadam: Drayverlani yangilang. 4-qadam: Kerak bo'lsa ko'proq RAM qo'shing.",
+    "tags": [
+      "ishlash",
+      "sekin",
+      "optimallashtirish"
+    ],
+    "views": 980,
+    "createdAt": "2025-05-24T11:55:57.862Z"
+  },
+  {
+    "id": 3,
+    "title": "WiFi Ulanish Muammolari",
+    "category": "network",
+    "content": "1-qadam: Router va modemni qayta ishga tushiring. 2-qadam: Tarmoq drayverlarini yangilang. 3-qadam: Tarmoq sozlamalarini tiklang. 4-qadam: Interferensiyani tekshiring.",
+    "tags": [
+      "wifi",
+      "tarmoq",
+      "ulanish"
+    ],
+    "views": 756,
+    "createdAt": "2025-05-24T11:55:57.862Z"
+  }
+]

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli - Dern-Support</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="dashboard">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-tools"></i>
+                <span>Dern-Support Admin</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Bosh sahifa</a></li>
+                <li><span id="adminWelcome">Xush kelibsiz, Admin</span></li>
+                <li><a href="#" onclick="logout()">Chiqish</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <h1>Admin Paneli</h1>
+        <p>Qo'llab-quvvatlash so'rovlari, inventar va tizim tahlillarini boshqaring</p>
+    </div>
+
+    <!-- Dashboard Navigation -->
+    <nav class="dashboard-nav">
+        <ul>
+            <li><a href="#" onclick="showAdminSection('overview')" class="active">Umumiy ko'rinish</a></li>
+            <li><a href="#" onclick="showAdminSection('tickets')">So'rovlar</a></li>
+            <li><a href="#" onclick="showAdminSection('inventory')">Inventar</a></li>
+            <li><a href="#" onclick="showAdminSection('analytics')">Tahlillar</a></li>
+            <li><a href="#" onclick="showAdminSection('users')">Foydalanuvchilar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+        <!-- Overview Section -->
+        <div id="admin-overview-section" class="dashboard-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="adminTotalTickets">0</h3>
+                    <p>Jami So'rovlar</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="adminPendingTickets">0</h3>
+                    <p>Kutilayotgan So'rovlar</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="adminCompletedTickets">0</h3>
+                    <p>Bugun Bajarilgan</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="adminTotalUsers">0</h3>
+                    <p>Jami Foydalanuvchilar</p>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h3>So'nggi Faoliyat</h3>
+                <div class="table-responsive">
+                    <table id="adminRecentActivity">
+                        <thead>
+                            <tr>
+                                <th>Vaqt</th>
+                                <th>Faoliyat</th>
+                                <th>Foydalanuvchi</th>
+                                <th>Holat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Recent activity will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tickets Section -->
+        <div id="admin-tickets-section" class="dashboard-section hidden">
+            <div class="section-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3>Barcha Qo'llab-quvvatlash So'rovlari</h3>
+                    <button class="btn-primary" onclick="showCreateTicketModal()">
+                        <i class="fas fa-plus"></i> So'rov Yaratish
+                    </button>
+                </div>
+                
+                <div class="filters" style="margin-bottom: 20px;">
+                    <select id="statusFilter" onchange="filterTickets()">
+                        <option value="">Barcha holatlar</option>
+                        <option value="pending">Kutilayotgan</option>
+                        <option value="in-progress">Jarayonda</option>
+                        <option value="completed">Bajarilgan</option>
+                        <option value="cancelled">Bekor qilingan</option>
+                    </select>
+                    <select id="priorityFilter" onchange="filterTickets()">
+                        <option value="">Barcha muhimlik</option>
+                        <option value="low">Past</option>
+                        <option value="medium">O'rta</option>
+                        <option value="high">Yuqori</option>
+                        <option value="urgent">Shoshilinch</option>
+                    </select>
+                </div>
+                
+                <div class="table-responsive">
+                    <table id="adminTicketsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Mijoz</th>
+                                <th>Sarlavha</th>
+                                <th>Holat</th>
+                                <th>Muhimlik</th>
+                                <th>Kategoriya</th>
+                                <th>Yaratilgan</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- All tickets will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inventory Section -->
+        <div id="admin-inventory-section" class="dashboard-section hidden">
+            <div class="section-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3>Inventar Boshqaruvi</h3>
+                    <button class="btn-primary" onclick="showAddInventoryModal()">
+                        <i class="fas fa-plus"></i> Element Qo'shish
+                    </button>
+                </div>
+                
+                <div class="table-responsive">
+                    <table id="inventoryTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nomi</th>
+                                <th>Kategoriya</th>
+                                <th>Miqdor</th>
+                                <th>Narx</th>
+                                <th>Ta'minotchi</th>
+                                <th>Oxirgi yangilanish</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Inventory items will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Section -->
+        <div id="admin-analytics-section" class="dashboard-section hidden">
+            <div class="section-card">
+                <h3>Biznes Tahlillari</h3>
+                
+                <div class="analytics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                    <div class="analytics-card">
+                        <h4>So'rov Hal Qilish Vaqti</h4>
+                        <div class="metric">
+                            <span class="metric-value" id="avgResolutionTime">2.5</span>
+                            <span class="metric-unit">kun o'rtacha</span>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h4>Mijoz Mamnuniyati</h4>
+                        <div class="metric">
+                            <span class="metric-value" id="customerSatisfaction">94</span>
+                            <span class="metric-unit">% mamnun</span>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h4>Eng Ko'p Uchraydigan Muammolar</h4>
+                        <div id="commonIssues">
+                            <div class="issue-item">Apparat Muammolari (35%)</div>
+                            <div class="issue-item">Dasturiy Ta'minot Muammolari (28%)</div>
+                            <div class="issue-item">Tarmoq Muammolari (22%)</div>
+                            <div class="issue-item">Xavfsizlik Muammolari (15%)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h4>Oylik So'rovlar Tendentsiyasi</h4>
+                    <div id="ticketTrends" style="height: 300px; background: #f8f9fa; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Bu yerda Chart.js kabi grafik kutubxonasi bilan grafik ko'rsatiladi
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Section -->
+        <div id="admin-users-section" class="dashboard-section hidden">
+            <div class="section-card">
+                <h3>Foydalanuvchilar Boshqaruvi</h3>
+                
+                <div class="table-responsive">
+                    <table id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ism</th>
+                                <th>Email</th>
+                                <th>Telefon</th>
+                                <th>Hisob turi</th>
+                                <th>Qo'shilgan</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Ticket Modal -->
+    <div id="editTicketModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('editTicketModal')">&times;</span>
+            <h2>So'rovni Tahrirlash</h2>
+            <form id="editTicketForm">
+                <input type="hidden" id="editTicketId">
+                
+                <div class="form-group">
+                    <label for="editTicketTitle">Sarlavha:</label>
+                    <input type="text" id="editTicketTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editTicketStatus">Holat:</label>
+                    <select id="editTicketStatus" required>
+                        <option value="pending">Kutilayotgan</option>
+                        <option value="in-progress">Jarayonda</option>
+                        <option value="completed">Bajarilgan</option>
+                        <option value="cancelled">Bekor qilingan</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editTicketPriority">Muhimlik:</label>
+                    <select id="editTicketPriority" required>
+                        <option value="low">Past</option>
+                        <option value="medium">O'rta</option>
+                        <option value="high">Yuqori</option>
+                        <option value="urgent">Shoshilinch</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editTicketDescription">Tavsif:</label>
+                    <textarea id="editTicketDescription" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editTicketSolution">Yechim:</label>
+                    <textarea id="editTicketSolution" rows="4" placeholder="Yechim tafsilotlarini kiriting..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary">So'rovni Yangilash</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Inventory Modal -->
+    <div id="addInventoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addInventoryModal')">&times;</span>
+            <h2>Inventar Elementi Qo'shish</h2>
+            <form id="addInventoryForm">
+                <div class="form-group">
+                    <label for="inventoryName">Element nomi:</label>
+                    <input type="text" id="inventoryName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inventoryCategory">Kategoriya:</label>
+                    <select id="inventoryCategory" required>
+                        <option value="">Kategoriyani tanlang</option>
+                        <option value="hardware">Apparat</option>
+                        <option value="software">Dasturiy ta'minot</option>
+                        <option value="accessories">Aksessuarlar</option>
+                        <option value="tools">Asboblar</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inventoryQuantity">Miqdor:</label>
+                    <input type="number" id="inventoryQuantity" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inventoryPrice">Narx (so'm):</label>
+                    <input type="number" id="inventoryPrice" step="0.01" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inventorySupplier">Ta'minotchi:</label>
+                    <input type="text" id="inventorySupplier" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">Element Qo'shish</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

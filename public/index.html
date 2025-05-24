@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dern-Support - Professional IT Yechimlari</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="file-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-tools"></i>
+                <span>Dern-Support</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Bosh sahifa</a></li>
+                <li><a href="#about">Biz haqimizda</a></li>
+                <li><a href="#services">Xizmatlar</a></li>
+                <li><a href="#knowledge-base">Bilimlar bazasi</a></li>
+                <li><a href="#contact">Aloqa</a></li>
+                <li><a href="#" onclick="showLoginModal()">Kirish</a></li>
+                <li><a href="#" onclick="showRegisterModal()" class="btn-primary">Ro'yxatdan o'tish</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Professional IT Qo'llab-quvvatlash Yechimlari</h1>
+            <p>Biznes va jismoniy shaxslar uchun mutaxassis kompyuter ta'mirlash va texnik yordam</p>
+            <div class="hero-buttons">
+                <button onclick="showRegisterModal()" class="btn-primary">Boshlash</button>
+                <button onclick="showLoginModal()" class="btn-secondary">Kirish</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-laptop-code"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Dern-Support Haqida</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Dern-Support - korxonalar va jismoniy mijozlar uchun kompyuter tizimlarini ta'mirlash bo'yicha ixtisoslashgan yetakchi IT texnik yordam kompaniyasi. Biz biznes mijozlari uchun joyida yordam ko'rsatamiz va shaxsiy mijozlar uchun qulay topshirish yoki kuryer xizmatlarini taklif etamiz.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Ishonchli Xizmat</h3>
+                            <p>Professional va ishonchli IT qo'llab-quvvatlash</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <h3>Tez Javob</h3>
+                            <p>Barcha ta'mirlash ishlari uchun tez bajarilish vaqti</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <h3>Mutaxassis Jamoa</h3>
+                            <p>Ko'p yillik tajribaga ega sertifikatlangan texniklar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Bizning Xizmatlarimiz</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Apparat Ta'mirlash</h3>
+                    <p>To'liq apparat diagnostikasi va ta'mirlash xizmatlari</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Dasturiy Ta'minot Yechimlari</h3>
+                    <p>Dasturiy ta'minot o'rnatish, yangilash va muammolarni hal qilish</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Tarmoq Sozlash</h3>
+                    <p>Tarmoq konfiguratsiyasi va ulanish yechimlari</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h3>Xavfsizlik Xizmatlari</h3>
+                    <p>Virus olib tashlash va xavfsizlik tizimini joriy etish</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Knowledge Base Section -->
+    <section id="knowledge-base" class="knowledge-base">
+        <div class="container">
+            <h2>Bilimlar Bazasi</h2>
+            <div class="kb-content">
+                <div class="kb-search">
+                    <input type="text" id="kb-search" placeholder="Yechimlarni qidiring...">
+                    <button onclick="searchKnowledgeBase()"><i class="fas fa-search"></i></button>
+                </div>
+                <div id="kb-results" class="kb-results">
+                    <!-- Knowledge base articles will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Mijozlarimiz Fikrlari</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Ajoyib xizmat! Ular mening noutbukimni tez va professional tarzda ta'mirladilar."</p>
+                    <div class="customer">- Saida Karimova</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Ofis tarmog'imiz uchun ajoyib qo'llab-quvvatlash. Juda tavsiya etaman!"</p>
+                    <div class="customer">- Tech Solutions MChJ</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Professional jamoa va tez javob vaqti. Juda mamnunman!"</p>
+                    <div class="customer">- Bobur Aliyev</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Biz Bilan Bog'laning</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+998 (90) 123-45-67</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@dern-support.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Toshkent sh., IT ko'chasi, 123-uy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Dern-Support</h3>
+                    <p>Barcha texnologik ehtiyojlaringiz uchun professional IT qo'llab-quvvatlash yechimlari.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Tezkor Havolalar</h3>
+                    <ul>
+                        <li><a href="#home">Bosh sahifa</a></li>
+                        <li><a href="#about">Biz haqimizda</a></li>
+                        <li><a href="#services">Xizmatlar</a></li>
+                        <li><a href="#contact">Aloqa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Bizni Kuzatib Boring</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dern-Support. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Tizimga Kirish</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Parol:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="isAdmin"> Admin sifatida kirish
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary">Kirish</button>
+            </form>
+            <p>Hisobingiz yo'qmi? <a href="#" onclick="closeModal('loginModal'); showRegisterModal();">Bu yerda ro'yxatdan o'ting</a></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Hisob Yaratish</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">To'liq ism:</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email:</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPhone">Telefon raqam:</label>
+                    <input type="tel" id="registerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Parol:</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="accountType">Hisob turi:</label>
+                    <select id="accountType" required>
+                        <option value="">Hisob turini tanlang</option>
+                        <option value="personal">Shaxsiy</option>
+                        <option value="business">Biznes/Korporativ</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Hisob Yaratish</button>
+            </form>
+            <p>Hisobingiz bormi? <a href="#" onclick="closeModal('registerModal'); showLoginModal();">Bu yerda kiring</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="file-storage.js"></script>
+</body>
+</html>

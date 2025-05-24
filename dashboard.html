@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mijoz Paneli - Dern-Support</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="dashboard">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-tools"></i>
+                <span>Dern-Support</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Bosh sahifa</a></li>
+                <li><span id="userWelcome">Xush kelibsiz, Foydalanuvchi</span></li>
+                <li><a href="#" onclick="logout()">Chiqish</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <h1>Mijoz Paneli</h1>
+        <p>Qo'llab-quvvatlash so'rovlaringizni boshqaring va bilimlar bazasiga kiring</p>
+    </div>
+
+    <!-- Dashboard Navigation -->
+    <nav class="dashboard-nav">
+        <ul>
+            <li><a href="#" onclick="showSection('overview')" class="active">Umumiy ko'rinish</a></li>
+            <li><a href="#" onclick="showSection('tickets')">Mening so'rovlarim</a></li>
+            <li><a href="#" onclick="showSection('new-ticket')">So'rov yuborish</a></li>
+            <li><a href="#" onclick="showSection('knowledge-base')">Bilimlar bazasi</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+        <!-- Overview Section -->
+        <div id="overview-section" class="dashboard-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalTickets">0</h3>
+                    <p>Jami so'rovlar</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="pendingTickets">0</h3>
+                    <p>Kutilayotgan</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="completedTickets">0</h3>
+                    <p>Bajarilgan</p>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h3>So'nggi So'rovlar</h3>
+                <div class="table-responsive">
+                    <table id="recentTicketsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Sarlavha</th>
+                                <th>Holat</th>
+                                <th>Yaratilgan</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Recent tickets will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tickets Section -->
+        <div id="tickets-section" class="dashboard-section hidden">
+            <div class="section-card">
+                <h3>Barcha So'rovlarim</h3>
+                <div class="table-responsive">
+                    <table id="allTicketsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Sarlavha</th>
+                                <th>Holat</th>
+                                <th>Muhimlik</th>
+                                <th>Yaratilgan</th>
+                                <th>Yangilangan</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- All tickets will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Ticket Section -->
+        <div id="new-ticket-section" class="dashboard-section hidden">
+            <div class="section-card">
+                <h3>Yangi Qo'llab-quvvatlash So'rovi</h3>
+                <form id="newTicketForm">
+                    <div class="form-group">
+                        <label for="ticketTitle">Muammo sarlavhasi:</label>
+                        <input type="text" id="ticketTitle" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ticketCategory">Kategoriya:</label>
+                        <select id="ticketCategory" required>
+                            <option value="">Kategoriyani tanlang</option>
+                            <option value="hardware">Apparat muammosi</option>
+                            <option value="software">Dasturiy ta'minot muammosi</option>
+                            <option value="network">Tarmoq muammosi</option>
+                            <option value="security">Xavfsizlik muammosi</option>
+                            <option value="other">Boshqa</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ticketPriority">Muhimlik darajasi:</label>
+                        <select id="ticketPriority" required>
+                            <option value="">Muhimlik darajasini tanlang</option>
+                            <option value="low">Past</option>
+                            <option value="medium">O'rta</option>
+                            <option value="high">Yuqori</option>
+                            <option value="urgent">Shoshilinch</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ticketDescription">Tavsif:</label>
+                        <textarea id="ticketDescription" rows="5" required placeholder="Muammoingizni batafsil tasvirlab bering..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ticketAttachments">Biriktirmalar (Rasm/Video):</label>
+                        <input type="file" id="ticketAttachments" multiple accept="image/*,video/*">
+                        <small>Muammoingizni yaxshiroq tushunishimiz uchun rasm va videolarni yuklashingiz mumkin.</small>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">So'rov Yuborish</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Knowledge Base Section -->
+        <div id="knowledge-base-section" class="dashboard-section hidden">
+            <div class="section-card">
+                <h3>Bilimlar Bazasi</h3>
+                <div class="kb-search">
+                    <input type="text" id="dashboardKbSearch" placeholder="Yechimlarni qidiring...">
+                    <button onclick="searchDashboardKB()"><i class="fas fa-search"></i></button>
+                </div>
+                <div id="dashboardKbResults" class="kb-results">
+                    <!-- Knowledge base articles will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ticket Details Modal -->
+    <div id="ticketModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('ticketModal')">&times;</span>
+            <h2>So'rov Tafsilotlari</h2>
+            <div id="ticketDetails">
+                <!-- Ticket details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

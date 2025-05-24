@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "userId": 2,
+    "title": "Kompyuter ishga tushmayapti",
+    "description": "Mening kompyuterim to'satdan ishlamay qoldi va yoqilmayapti.",
+    "status": "completed",
+    "priority": "high",
+    "category": "hardware",
+    "customerName": "Test Mijoz",
+    "customerPhone": "+998-90-123-4567",
+    "customerType": "personal",
+    "attachments": [],
+    "solution": "Buzilgan quvvat bloki almashtirildi. Tizim endi normal ishlayapti.",
+    "createdAt": "2025-05-23T11:55:57.861Z",
+    "updatedAt": "2025-05-24T11:55:57.861Z"
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "title": "Dasturiy ta'minot o'rnatish muammosi",
+    "description": "Yangi dasturni o'rnatishda muammo bor.",
+    "status": "pending",
+    "priority": "medium",
+    "category": "software",
+    "customerName": "Test Mijoz",
+    "customerPhone": "+998-90-123-4567",
+    "customerType": "personal",
+    "attachments": [],
+    "solution": "",
+    "createdAt": "2025-05-24T11:55:57.861Z",
+    "updatedAt": "2025-05-24T11:55:57.861Z"
+  }
+]

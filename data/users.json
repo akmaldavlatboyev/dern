@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Admin Foydalanuvchi",
+    "email": "admin@dern-support.com",
+    "phone": "+998-90-000-0000",
+    "password": "$2a$10$jBVYbcvBYq0a4puaVyBeTOBF0a7L6VlIO3kZdczhlKAzifvv3qUiq",
+    "accountType": "admin",
+    "isAdmin": true,
+    "createdAt": "2025-05-24T11:55:57.804Z"
+  },
+  {
+    "id": 2,
+    "name": "Test Mijoz",
+    "email": "test@example.com",
+    "phone": "+998-90-123-4567",
+    "password": "$2a$10$KHSTmQ3BgBp6s56F7zNmNejRNLHY4pDdv3Fj5cm9zAQTCeh5huVHC",
+    "accountType": "personal",
+    "isAdmin": false,
+    "createdAt": "2025-05-24T11:55:57.861Z"
+  }
+]
