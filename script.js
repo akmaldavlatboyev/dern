@@ -127,12 +127,4 @@ window.generateId = function() {
   return Date.now() + Math.floor(Math.random() * 1000)
 }
 
-// Qolgan funksiyalar (login, register, KB va boshqalar) sizda ishlasa shu holda qolsin!
-// Faqat, agar kerak bo'lsa, hammasini window orqali export qiling.
-
-// Example: 
-// window.handleLogin = handleLogin
-// window.handleRegister = handleRegister
-// ...
-
-// End!
+// Admin panel faqat admin.js orqali ishlaydi, boshqa funksiyalarni ham window orqali export qiling
