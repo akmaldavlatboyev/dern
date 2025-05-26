@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;">
     <title>Mijoz Paneli - Dern-Support</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -32,17 +33,17 @@
     <!-- Dashboard Navigation -->
     <nav class="dashboard-nav">
         <ul>
-            <li><a href="#" onclick="showSection('overview')" class="active">Umumiy ko'rinish</a></li>
-            <li><a href="#" onclick="showSection('tickets')">Mening so'rovlarim</a></li>
-            <li><a href="#" onclick="showSection('new-ticket')">So'rov yuborish</a></li>
-            <li><a href="#" onclick="showSection('knowledge-base')">Bilimlar bazasi</a></li>
+            <li><a href="#" data-section="overview" class="nav-link active">Umumiy ko'rinish</a></li>
+            <li><a href="#" data-section="tickets" class="nav-link">Mening so'rovlarim</a></li>
+            <li><a href="#" data-section="new-ticket" class="nav-link">So'rov yuborish</a></li>
+            <li><a href="#" data-section="knowledge-base" class="nav-link">Bilimlar bazasi</a></li>
         </ul>
     </nav>
 
     <!-- Dashboard Content -->
     <div class="dashboard-content">
         <!-- Overview Section -->
-        <div id="overview-section" class="dashboard-section">
+        <div id="overview-section" class="dashboard-section active">
             <div class="stats-grid">
                 <div class="stat-card">
                     <h3 id="totalTickets">0</h3>
@@ -80,7 +81,7 @@
         </div>
 
         <!-- Tickets Section -->
-        <div id="tickets-section" class="dashboard-section hidden">
+        <div id="tickets-section" class="dashboard-section">
             <div class="section-card">
                 <h3>Barcha So'rovlarim</h3>
                 <div class="table-responsive">
@@ -105,7 +106,7 @@
         </div>
 
         <!-- New Ticket Section -->
-        <div id="new-ticket-section" class="dashboard-section hidden">
+        <div id="new-ticket-section" class="dashboard-section">
             <div class="section-card">
                 <h3>Yangi Qo'llab-quvvatlash So'rovi</h3>
                 <form id="newTicketForm">
@@ -154,7 +155,7 @@
         </div>
 
         <!-- Knowledge Base Section -->
-        <div id="knowledge-base-section" class="dashboard-section hidden">
+        <div id="knowledge-base-section" class="dashboard-section">
             <div class="section-card">
                 <h3>Bilimlar Bazasi</h3>
                 <div class="kb-search">
@@ -179,7 +180,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
     <script src="dashboard.js"></script>
 </body>
 </html>

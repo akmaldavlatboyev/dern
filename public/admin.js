@@ -1,4 +1,4 @@
-// Admin panel uchun window globaldan ma'lumotlarni olamiz:
+
 let currentAdminSection = "overview"
 let currentUser
 let tickets
@@ -10,7 +10,7 @@ const formatDate = window.formatDate
 const generateId = window.generateId
 const closeModal = window.closeModal
 
-// Holat va muhimlik uchun tarjimalar
+
 function getStatusText(status) {
   switch (status) {
     case "pending":      return "Kutilmoqda"
@@ -30,9 +30,8 @@ function getPriorityText(priority) {
   }
 }
 
-// Initialize admin dashboard
 document.addEventListener("DOMContentLoaded", () => {
-  // Check if user is admin
+  
   const savedUser = localStorage.getItem("currentUser")
   if (!savedUser) {
     window.location.href = "index.html"
@@ -55,7 +54,8 @@ function setupAdminEventListeners() {
   document.getElementById("addInventoryForm").addEventListener("submit", handleAddInventory)
 }
 
-// Barcha admin panel ma'lumotlarini yuklash
+
+
 function loadAdminDashboardData() {
   loadData()
   tickets = window.tickets
@@ -68,7 +68,8 @@ function loadAdminDashboardData() {
   loadRecentActivity()
 }
 
-// Statistikani yangilash
+
+
 function updateAdminStats() {
   const totalTickets = tickets.length
   const pendingTickets = tickets.filter(
@@ -87,7 +88,7 @@ function updateAdminStats() {
   document.getElementById("adminTotalUsers").textContent = totalUsers
 }
 
-// So'rovlar ro'yxatini yuklash
+
 function loadAdminTickets() {
   const tbody = document.querySelector("#adminTicketsTable tbody")
   tbody.innerHTML = ""
@@ -117,7 +118,7 @@ function loadAdminTickets() {
     })
 }
 
-// Inventar ro'yxatini yuklash
+
 function loadInventory() {
   const tbody = document.querySelector("#inventoryTable tbody")
   tbody.innerHTML = ""
@@ -143,7 +144,7 @@ function loadInventory() {
   })
 }
 
-// Foydalanuvchilar ro'yxatini yuklash
+
 function loadUsers() {
   const tbody = document.querySelector("#usersTable tbody")
   tbody.innerHTML = ""
@@ -170,7 +171,7 @@ function loadUsers() {
     })
 }
 
-// So'nggi faoliyat
+
 function loadRecentActivity() {
   const tbody = document.querySelector("#adminRecentActivity tbody")
   tbody.innerHTML = ""
@@ -199,7 +200,7 @@ function loadRecentActivity() {
   })
 }
 
-// Bo'limlar o'zgartirish
+
 function showAdminSection(sectionName) {
   document.querySelectorAll(".dashboard-section").forEach((section) => {
     section.classList.add("hidden")
@@ -217,7 +218,9 @@ function showAdminSection(sectionName) {
   currentAdminSection = sectionName
 }
 
-// So'rovni tahrirlash oynasi
+
+
+
 function editTicket(ticketId) {
   const ticket = tickets.find((t) => t.id === ticketId)
   if (!ticket) return
@@ -230,7 +233,8 @@ function editTicket(ticketId) {
   document.getElementById("editTicketModal").style.display = "block"
 }
 
-// So'rovni tahrirlashni saqlash
+
+
 function handleEditTicket(e) {
   e.preventDefault()
   const ticketId = Number.parseInt(document.getElementById("editTicketId").value)
@@ -257,7 +261,8 @@ function handleEditTicket(e) {
   }
 }
 
-// So'rovni o'chirish
+
+
 function deleteTicket(ticketId) {
   if (confirm("Bu so'rovni o'chirishga ishonchingiz komilmi?")) {
     tickets = tickets.filter((t) => t.id !== ticketId)
@@ -321,7 +326,8 @@ function viewAdminTicket(ticketId) {
       }
     </div>
   `
-  // Create and show modal
+  
+
   const modal = document.createElement("div")
   modal.className = "modal"
   modal.style.display = "block"
@@ -335,12 +341,12 @@ function viewAdminTicket(ticketId) {
   document.body.appendChild(modal)
 }
 
-// Inventar qo'shish oynasi
+
 function showAddInventoryModal() {
   document.getElementById("addInventoryModal").style.display = "block"
 }
 
-// Inventar qo'shish
+
 function handleAddInventory(e) {
   e.preventDefault()
   const name = document.getElementById("inventoryName").value
@@ -367,7 +373,7 @@ function handleAddInventory(e) {
   alert("Inventar elementi muvaffaqiyatli qo'shildi!")
 }
 
-// Inventarni tahrirlash (faqat miqdorini)
+
 function editInventoryItem(itemId) {
   const item = inventory.find((i) => i.id === itemId)
   if (!item) return
@@ -383,7 +389,7 @@ function editInventoryItem(itemId) {
   }
 }
 
-// Inventarni o'chirish
+
 function deleteInventoryItem(itemId) {
   if (confirm("Bu inventar elementini o'chirishga ishonchingiz komilmi?")) {
     inventory = inventory.filter((i) => i.id !== itemId)
@@ -394,7 +400,7 @@ function deleteInventoryItem(itemId) {
   }
 }
 
-// So'rovlar filter
+
 function filterTickets() {
   const statusFilter = document.getElementById("statusFilter").value
   const priorityFilter = document.getElementById("priorityFilter").value
@@ -432,7 +438,7 @@ function filterTickets() {
     })
 }
 
-// Foydalanuvchini ko'rish
+
 function viewUser(userId) {
   const user = users.find((u) => u.id === userId)
   if (!user) return
@@ -494,7 +500,7 @@ function deleteUser(userId) {
 // Chiqish
 function logout() {
   localStorage.removeItem("currentUser")
-  window.location.href = "index.html"
+  window.location.href = "/public/index.html"
 }
 
 // *** ADMIN STYLES ***
